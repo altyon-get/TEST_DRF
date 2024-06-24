@@ -1,0 +1,43 @@
+### GET request to example server
+GET http://127.0.0.1:8000/
+###
+
+### GET request to example server
+GET http://127.0.0.1:8000/student/
+###
+
+
+###
+POST 127.0.0.1:8000/student/
+Content-Type: application/json
+
+{
+ "name": "testing fuve",
+ "age": 26,
+ "father_name": "Vinod"
+}
+###
+
+###
+PATCH 127.0.0.1:8000/student/
+Content-Type: application/json
+
+{
+  "id" : 3,
+  "name": "xyz_updated_updated",
+  "age": 29
+}
+###
+
+###
+DELETE 127.0.0.1:8000/student/
+Content-Type: application/json
+
+{
+  "id": "3"
+}
+###
+
+###
+GET 127.0.0.1:8000/get_book/
+###

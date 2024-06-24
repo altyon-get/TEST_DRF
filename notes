@@ -1,0 +1,7 @@
+views me validation directly na lga ke,
+serializer me hi krliya kro
+
+patch parital update krta h and put complete
+
+session authentication vs jwt authenticaiton
+so jwt hr thode time pe token refresh krte h ye session nhi krta tha
