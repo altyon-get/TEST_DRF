@@ -4,7 +4,11 @@ GET http://127.0.0.1:8000/
 
 ### GET request to example server
 GET http://127.0.0.1:8000/student/
+#Authorization: token 87f47b2962cec269daaf8818a641014c2a6315fa
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5MzIzODAwLCJpYXQiOjE3MTkzMjM1MDAsImp0aSI6ImY1ZGQwNjk3OTI1YjRmMTI4ZDI3MDY1NDM2NjRlMjZkIiwidXNlcl9pZCI6NX0.L2U2hN4vj-Qg4OHhHSoKgVF4j0kgz62f3wx7XHpn_mY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5MzI3NTA4LCJpYXQiOjE3MTkzMjM5MDgsImp0aSI6IjJkM2FlZTEyOTdkZDRiYzU5MmIxYmY2M2JjMzk4ZDZlIiwidXNlcl9pZCI6NX0.dMN9-zwCZqxZMd9q1lzfA6xLtAYmyV1CbLyeA9kACIc
 ###
+
 
 
 ###
@@ -54,8 +58,20 @@ Content-Type: application/json
 }
 ###
 
+
+#Registering User:
 ###
 POST 127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+  "username": "altyon_jwt_token",
+  "password": "123"
+}
+###
+
+###
+POST 127.0.0.1:8000/api/token/
 Content-Type: application/json
 
 {
