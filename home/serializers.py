@@ -1,11 +1,35 @@
 from rest_framework import serializers
 from .models import *
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
 
 
 
-# class TechsunamiStringField()
+class TechsunamiStringField(serializers.CharField):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def run_validation(self, data):
+
+        if not isinstance(data, str):
+            raise serializers.ValidationError("Data enter should be string type")
+
+        data = data.upper()
+        return super().run_validation(data)
+
 
 class StudentSerializer(serializers.ModelSerializer):
+
+    #customizable field
+    name = TechsunamiStringField(max_length=100)
+
     class Meta:
         model = Student
         # field =['name','age']

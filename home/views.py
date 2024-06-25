@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -13,6 +14,17 @@ def get_book(request):
     book_objs = Book.objects.all()
     serializer = BookSerializer(book_objs, many=True)
     return Response({'status': 200, 'payload': serializer.data})
+
+from rest_framework.authtoken.models import Token
+class RegisterUserView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.save()
+        user = User.objects.get(username=serializer.data['username'])
+        token_obj, _ = Token.objects.get_or_create(user=user)
+        return Response({'data': serializer.data, 'status': status.HTTP_201_CREATED, 'token': str(token_obj)})
 
 # @api_view(['GET'])
 # def home(request):
@@ -57,7 +69,13 @@ def get_book(request):
 #         return Response({'Status': 403, 'message': 'invalid id'})
 
 
+
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 class StudentAPI(APIView):
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         student_objs = Student.objects.all()

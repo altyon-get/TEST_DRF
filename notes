@@ -5,3 +5,7 @@ patch parital update krta h and put complete
 
 session authentication vs jwt authenticaiton
 so jwt hr thode time pe token refresh krte h ye session nhi krta tha
+
+
+Doubts:
+path('api-token-auth/', views.obtain_auth_token), how's its flow is working

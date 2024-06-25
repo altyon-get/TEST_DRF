@@ -12,7 +12,7 @@ POST 127.0.0.1:8000/student/
 Content-Type: application/json
 
 {
- "name": "testing fuve",
+ "name": "testing nine",
  "age": 26,
  "father_name": "Vinod"
 }
@@ -40,4 +40,26 @@ Content-Type: application/json
 
 ###
 GET 127.0.0.1:8000/get_book/
+###
+
+
+#token: b18b219eb5d44f4bdf0607b0655308a6f15a072a
+###
+POST 127.0.0.1:8000/api-token-auth/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123"
+}
+###
+
+###
+POST 127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+  "username": "testing",
+  "password": "123"
+}
 ###
